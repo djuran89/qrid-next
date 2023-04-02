@@ -1,0 +1,101 @@
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: var(--headerHeight);
+	padding-inline: 16px;
+	background-color: var(--headerColor);
+	border-bottom: 1px solid var(--lightGray);
+	h1 {
+		font-family: "Bona Nova", serif;
+	}
+	nav {
+		display: flex;
+		gap: 8px;
+	}
+}
+
+.subHeader {
+	height: 44px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid #ccc;
+	background-color: var(--whiteGray);
+	h1 {
+		flex: 1;
+		display: flex;
+		justify-content: center;
+		font-size: 16px;
+		font-weight: 200;
+	}
+	button {
+		left: 0px;
+		position: absolute;
+	}
+}
+
+.dropdown {
+	.dropdownToggle,
+	.dropdownToggle:active {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: transparent;
+		outline: 0;
+		border: 0;
+		height: 42px;
+		width: 42px;
+		span {
+			font-size: 32px;
+			color: var(--secoundaryColor);
+			font-variation-settings: "FILL" 1, "wght" 100, "GRAD" 0, "opsz" 40;
+		}
+		.active {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			position: absolute;
+			top: 3px;
+			right: 4px;
+			height: 12px;
+			width: 12px;
+			background-color: var(--redColor);
+			border-radius: 7px;
+			color: #fff;
+			font-size: 10px;
+			font-weight: 500;
+		}
+	}
+	.dropdownMenu {
+		position: absolute;
+		right: 5px;
+		background-color: #fff;
+		top: calc(var(--headerHeight) - 10px);
+		border: 1px solid var(--lightGray);
+		border-radius: 4px;
+		z-index: 10;
+		.dropdownItem,
+		.dropdownItem:active,
+		.dropdownItem:focus {
+			display: block;
+			padding: 4px 16px;
+			min-width: 100px;
+			background-color: transparent;
+			border: 0;
+			outline: 0;
+			color: var(--primaryTextColor);
+			text-align: left;
+			font-size: 14px;
+			text-decoration: none;
+		}
+		.dropdownItem:hover {
+			background-color: rgba(0, 0, 0, 0.05);
+		}
+		.lastItem {
+			text-align: center !important;
+			background-color: rgba(0, 0, 0, 0.05);
+		}
+	}
+}

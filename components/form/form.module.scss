@@ -1,0 +1,81 @@
+.button {
+	width: 100%;
+	height: 42px;
+	padding-inline: 16px;
+}
+.togglePassword {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	top: 50%;
+	right: 16px;
+	transform: translate(0, -50%);
+	z-index: 3;
+	color: var(--darkGray);
+}
+.or {
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	text-transform: uppercase;
+	margin: 16px 0;
+	font-size: 14px;
+	.text {
+		padding: 0px 16px;
+	}
+	&::before {
+		content: "";
+		display: flex;
+		flex: 1;
+		height: 1px;
+		background-color: var(--darkGray);
+	}
+	&::after {
+		content: "";
+		display: flex;
+		flex: 1;
+		height: 1px;
+		background-color: var(--darkGray);
+	}
+}
+.formGroup {
+	.inputGroup {
+		position: relative;
+		height: 42px;
+		margin-bottom: 16px;
+	}
+	.labelGroup {
+		position: absolute;
+		top: 50%;
+		left: 16px;
+		font-size: 14px;
+		transform: translate(0, -50%);
+		z-index: 3;
+		transition: all 300ms ease-in-out;
+	}
+	input {
+		position: relative;
+		border: 1px solid #777;
+		outline: 0;
+		width: 100%;
+		height: 42px;
+		padding-inline: 16px;
+		padding-top: 8px;
+		border-radius: 6px;
+		background-color: rgba(255, 255, 255, 0.5);
+		border-bottom-color: var(--lightGray);
+		border-right-color: var(--lightGray);
+	}
+	input:focus,
+	input:focus ~ .labelGroup {
+		// border-color: var(--primaryColor);
+		// color: var(--primaryColor);
+	}
+	input:focus ~ .labelGroup,
+	.labelGroup.active {
+		top: 10px;
+		font-size: 10px;
+	}
+}

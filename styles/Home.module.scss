@@ -1,0 +1,24 @@
+.landingPage {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	gap: 32px;
+	padding: 120px 16px 0 16px;
+	.title {
+		font-size: 50px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-family: "Bona Nova", serif;
+	}
+	.subtitle {
+		font-size: 18px;
+		font-weight: 200;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+	}
+}
