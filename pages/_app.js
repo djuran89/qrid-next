@@ -8,8 +8,8 @@ import translate from "@/translate/translate";
 import "@/styles/globals.css";
 import "@/styles/spiner.css";
 
-process.env.URL = process.env.NODE_ENV === "development" ? "http://192.168.0.13:4000/api" : "http://18.195.49.234:4000/api";
-process.env.APPURL = process.env.NODE_ENV === "development" ? "http://192.168.0.13:3000" : "http://18.195.49.234:3000";
+process.env.URL = process.env.NODE_ENV === "development" ? "http://192.168.0.13:4000/api" : "http://18.195.49.234/api";
+process.env.APPURL = process.env.NODE_ENV === "development" ? "http://192.168.0.13:3000" : "http://18.195.49.234";
 // AXIOS CONFIG
 axios.defaults.baseURL = process.env.URL;
 axios.defaults.headers.post["Content-Type"] = "application/json";
