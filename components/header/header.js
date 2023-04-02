@@ -6,6 +6,7 @@ import moment from "moment";
 import { errorHandler } from "@/utility/msgHandler";
 
 import styles from "./header.module.scss";
+import Link from "next/link";
 
 function Header({ user, setUser }) {
 	const [notifications, setNotifications] = React.useState([]);
@@ -76,9 +77,9 @@ function Header({ user, setUser }) {
 						{notifications.map((notification, key) => (
 							<Notification notification={notification} key={key} />
 						))}
-						<a className={`${styles.dropdownItem} ${styles.lastItem}`} href="/">
+						<Link className={`${styles.dropdownItem} ${styles.lastItem}`} href="/">
 							See all notification
-						</a>
+						</Link>
 					</div>
 				</div>
 
@@ -87,9 +88,9 @@ function Header({ user, setUser }) {
 						<span className="material-symbols-outlined">person</span>
 					</button>
 					<div className={`${styles.dropdownMenu} dropdown-menu hidden`}>
-						<a className={styles.dropdownItem} href="/profile/edit">
+						<Link className={styles.dropdownItem} href="/profile/edit">
 							Edit profile
-						</a>
+						</Link>
 						<button className={styles.dropdownItem} onClick={onLogout}>
 							Logout
 						</button>
