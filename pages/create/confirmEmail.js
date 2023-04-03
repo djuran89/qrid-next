@@ -8,6 +8,8 @@ import SubHeader from "@/components/header/subHeader";
 
 function ConfirmEamil({ user, translate }) {
 	if (user) Router.push("/profile");
+	if (user) return;
+
 	const { email } = Router.query;
 	const [code, setCode] = React.useState("");
 

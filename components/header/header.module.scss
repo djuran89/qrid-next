@@ -1,11 +1,15 @@
 .header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	height: var(--headerHeight);
-	padding-inline: 16px;
+	width: 100%;
 	background-color: var(--headerColor);
 	border-bottom: 1px solid var(--lightGray);
+	.content {
+		position: relative;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: var(--headerHeight);
+		padding-inline: 16px;
+	}
 	h1 {
 		font-family: "Bona Nova", serif;
 	}
@@ -16,12 +20,17 @@
 }
 
 .subHeader {
+	width: 100%;
 	height: 44px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	border-bottom: 1px solid #ccc;
 	background-color: var(--whiteGray);
+	border-bottom: 1px solid #ccc;
+	.content {
+		position: relative;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: 100%;
+	}
 	h1 {
 		flex: 1;
 		display: flex;
@@ -97,5 +106,12 @@
 			text-align: center !important;
 			background-color: rgba(0, 0, 0, 0.05);
 		}
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.content {
+		width: var(--desktopWidth);
+		margin: 0 auto;
 	}
 }

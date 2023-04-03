@@ -8,6 +8,8 @@ import { Form, Input, Button } from "@/components/form/form";
 
 function ProfileCreate({ user, translate }) {
 	if (user) Router.push("/profile");
+	if (user) return;
+
 	const [email, setEmail] = useState("");
 	const [isEmailValid, setIsEmailValid] = useState(false);
 

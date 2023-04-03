@@ -11,6 +11,7 @@
 	--redColor: #ff6464;
 	--headerHeight: 64px;
 	--headerColor: #eaeaea;
+	--desktopWidth: 768px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -104,5 +105,12 @@ hr {
 @media (prefers-color-scheme: dark) {
 	html {
 		color-scheme: dark;
+	}
+}
+
+@media (min-width: 768px) {
+	.container {
+		max-width: var(--desktopWidth);
+		margin: 0 auto;
 	}
 }

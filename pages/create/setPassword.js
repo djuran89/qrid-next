@@ -9,6 +9,8 @@ import { Button, Form, Input } from "@/components/form/form";
 
 function CreateProfile({ user, setUser, translate }) {
 	if (user) Router.push("/profile");
+	if (user) return;
+
 	const [password, setPassword] = React.useState("");
 
 	const onSubmit = (e) => {
@@ -32,14 +34,7 @@ function CreateProfile({ user, setUser, translate }) {
 			<SubHeader title={translate.createProfile} />
 			<div className="container">
 				<Form onSubmit={onSubmit}>
-					<Input
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-						type="password"
-						name="password"
-						label={translate.eneterPassword}
-						required={true}
-					/>
+					<Input value={password} onChange={(e) => setPassword(e.target.value)} type="password" name="password" label={translate.eneterPassword} required={true} />
 					<Button>{translate.createYourProfile}</Button>
 				</Form>
 			</div>

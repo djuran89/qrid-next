@@ -28,7 +28,6 @@ export default function App({ Component, pageProps }) {
 	const [user, setUser] = React.useState(null);
 
 	React.useEffect(() => {
-		console.log("USE EFFECT APP");
 		axios
 			.get("/profile/login")
 			.then((res) => {
@@ -52,18 +51,5 @@ export default function App({ Component, pageProps }) {
 }
 
 const Toastify = () => {
-	return (
-		<ToastContainer
-			position="top-right"
-			autoClose={3000}
-			hideProgressBar={false}
-			newestOnTop
-			closeOnClick
-			rtl={false}
-			pauseOnFocusLoss={false}
-			draggable
-			pauseOnHover
-			theme="colored"
-		/>
-	);
+	return <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} newestOnTop closeOnClick rtl={false} pauseOnFocusLoss={false} draggable pauseOnHover theme="colored" />;
 };

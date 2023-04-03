@@ -62,41 +62,41 @@ function Header({ user, setUser }) {
 
 	return (
 		<header className={styles.header}>
-			<h1>QR ID</h1>
-			<nav>
-				<div className={`${styles.dropdown} dropdown-toggle`}>
-					<button className={styles.dropdownToggle} onClick={openNotifiction}>
-						<span className="material-symbols-outlined">
-							{activeNotifictions.length === 0 ? "notifications" : "notifications_active"}
-						</span>
+			<div className={styles.content}>
+				<h1>QR ID</h1>
+				<nav>
+					<div className={`${styles.dropdown} dropdown-toggle`}>
+						<button className={styles.dropdownToggle} onClick={openNotifiction}>
+							<span className="material-symbols-outlined">{activeNotifictions.length === 0 ? "notifications" : "notifications_active"}</span>
 
-						{activeNotifictions.length > 0 && <div className={styles.active}>{activeNotifictions.length}</div>}
-					</button>
-
-					<div className={`${styles.dropdownMenu} dropdown-menu hidden`}>
-						{notifications.map((notification, key) => (
-							<Notification notification={notification} key={key} />
-						))}
-						<Link className={`${styles.dropdownItem} ${styles.lastItem}`} href="/">
-							See all notification
-						</Link>
-					</div>
-				</div>
-
-				<div className={`${styles.dropdown} dropdown-toggle`}>
-					<button className={styles.dropdownToggle} onClick={showDropDown}>
-						<span className="material-symbols-outlined">person</span>
-					</button>
-					<div className={`${styles.dropdownMenu} dropdown-menu hidden`}>
-						<Link className={styles.dropdownItem} href="/profile/edit">
-							Edit profile
-						</Link>
-						<button className={styles.dropdownItem} onClick={onLogout}>
-							Logout
+							{activeNotifictions.length > 0 && <div className={styles.active}>{activeNotifictions.length}</div>}
 						</button>
+
+						<div className={`${styles.dropdownMenu} dropdown-menu hidden`}>
+							{notifications.map((notification, key) => (
+								<Notification notification={notification} key={key} />
+							))}
+							<Link className={`${styles.dropdownItem} ${styles.lastItem}`} href="/">
+								See all notification
+							</Link>
+						</div>
 					</div>
-				</div>
-			</nav>
+
+					<div className={`${styles.dropdown} dropdown-toggle`}>
+						<button className={styles.dropdownToggle} onClick={showDropDown}>
+							<span className="material-symbols-outlined">person</span>
+						</button>
+						<div className={`${styles.dropdownMenu} dropdown-menu hidden`}>
+							<Link className={styles.dropdownItem} href="/profile/edit">
+								Edit profile
+							</Link>
+							<button className={styles.dropdownItem} onClick={onLogout}>
+								Logout
+							</button>
+						</div>
+					</div>
+				</nav>
+			</div>
 		</header>
 	);
 }
