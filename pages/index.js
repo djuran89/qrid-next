@@ -2,6 +2,7 @@ import Link from "next/link";
 import Router from "next/router";
 
 import styles from "./../styles/Home.module.scss";
+import { Or } from "@/components/form/form";
 
 export default function Home({ user, translate }) {
 	if (user) Router.push("/profile");
@@ -15,6 +16,7 @@ export default function Home({ user, translate }) {
 				<Link href={"/create"} className="btn btn-full btn-primary">
 					{translate.getProfile}
 				</Link>
+				<Or />
 				<p>
 					{translate.haveProfile}{" "}
 					<Link href={"/login"} className="text-secondary">

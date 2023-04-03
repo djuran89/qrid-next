@@ -5,7 +5,7 @@ import { ToastContainer } from "react-toastify";
 
 import Loading from "@/components/loading/loading";
 import translate from "@/translate/translate";
-import "@/styles/globals.css";
+import "@/styles/globals.scss";
 import "@/styles/spiner.css";
 
 process.env.URL = process.env.NODE_ENV === "development" ? "http://192.168.0.13:4000/api" : "http://18.195.49.234/api";

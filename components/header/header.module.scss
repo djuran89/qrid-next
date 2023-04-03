@@ -2,6 +2,8 @@
 	width: 100%;
 	background-color: var(--headerColor);
 	border-bottom: 1px solid var(--lightGray);
+	background-color: #fff;
+	border-color: var(--borderColor);
 	.content {
 		position: relative;
 		display: flex;
@@ -22,8 +24,8 @@
 .subHeader {
 	width: 100%;
 	height: 44px;
-	background-color: var(--whiteGray);
-	border-bottom: 1px solid #ccc;
+	border-bottom: 1px solid var(--borderColor);
+	background-color: #fff;
 	.content {
 		position: relative;
 		display: flex;

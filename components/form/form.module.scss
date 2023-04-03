@@ -12,7 +12,7 @@
 	right: 16px;
 	transform: translate(0, -50%);
 	z-index: 3;
-	color: var(--darkGray);
+	color: var(--lableText);
 }
 .or {
 	text-align: center;
@@ -22,6 +22,7 @@
 	text-transform: uppercase;
 	margin: 16px 0;
 	font-size: 14px;
+	width: 100%;
 	.text {
 		padding: 0px 16px;
 	}
@@ -30,14 +31,14 @@
 		display: flex;
 		flex: 1;
 		height: 1px;
-		background-color: var(--darkGray);
+		background-color: var(--borderColor);
 	}
 	&::after {
 		content: "";
 		display: flex;
 		flex: 1;
 		height: 1px;
-		background-color: var(--darkGray);
+		background-color: var(--borderColor);
 	}
 }
 .formGroup {
@@ -53,26 +54,25 @@
 		font-size: 14px;
 		transform: translate(0, -50%);
 		z-index: 3;
-		transition: all 300ms ease-in-out;
+		transition: all 100ms linear;
 	}
 	input {
 		position: relative;
-		border: 1px solid #777;
+		border: 1px solid var(--borderColor);
 		outline: 0;
 		width: 100%;
 		height: 42px;
 		padding-inline: 16px;
 		padding-top: 8px;
 		border-radius: 6px;
-		background-color: rgba(255, 255, 255, 0.5);
-		border-bottom-color: var(--lightGray);
-		border-right-color: var(--lightGray);
-		color: var(--primaryTextColor);
+		background-color: var(--inputBG);
+	}
+	label {
+		color: var(--lableText);
 	}
 	input:focus,
 	input:focus ~ .labelGroup {
-		// border-color: var(--primaryColor);
-		// color: var(--primaryColor);
+		border-color: var(--focusBorder);
 	}
 	input:focus ~ .labelGroup,
 	.labelGroup.active {
