@@ -90,8 +90,10 @@
 		.dropdownItem,
 		.dropdownItem:active,
 		.dropdownItem:focus {
-			display: block;
-			padding: 4px 16px;
+			display: flex;
+			align-items: center;
+			padding-inline: 16px;
+			height: 42px;
 			min-width: 100px;
 			background-color: transparent;
 			border: 0;
