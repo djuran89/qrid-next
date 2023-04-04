@@ -17,6 +17,7 @@
 	--focusBorder: #a8a8a8;
 }
 $primaryColor: #00abb3;
+$secoundaryColor: #3c4048;
 @media (prefers-color-scheme: dark) {
 	:root {
 	}
@@ -79,6 +80,33 @@ hr {
 .btn-primary:disabled {
 	background-color: lighten($primaryColor, 5%);
 	cursor: not-allowed;
+}
+.btn-secondary {
+	background-color: var(--secoundaryColor);
+	color: #fff;
+	padding: 0.5rem 1rem;
+	border-radius: 0.5rem;
+	cursor: pointer;
+}
+.btn-secondary:disabled {
+	background-color: lighten($secoundaryColor, 5%);
+	cursor: not-allowed;
+}
+.btn-big {
+	font-size: 16px;
+	padding: 1rem 0;
+	font-weight: bold;
+	text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.2);
+}
+.btn-big.btn-primary {
+	border: 2px solid darken($primaryColor, 5%);
+	border-bottom-color: lighten($primaryColor, 5%);
+	border-right-color: lighten($primaryColor, 5%);
+}
+.btn-bit.btn-secondary {
+	border: 2px solid darken($secoundaryColor, 5%);
+	border-bottom-color: lighten($secoundaryColor, 5%);
+	border-right-color: lighten($secoundaryColor, 5%);
 }
 .btn-empty {
 	font-size: 14px;

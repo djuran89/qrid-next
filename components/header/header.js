@@ -63,11 +63,15 @@ function Header({ user, setUser }) {
 	return (
 		<header className={styles.header}>
 			<div className={styles.content}>
-				<h1>QR ID</h1>
+				<Link href={"/"}>
+					<h1>QR ID</h1>
+				</Link>
 				<nav>
 					<div className={`${styles.dropdown} dropdown-toggle`}>
 						<button className={styles.dropdownToggle} onClick={openNotifiction}>
-							<span className="material-symbols-outlined">{activeNotifictions.length === 0 ? "notifications" : "notifications_active"}</span>
+							<span className="material-symbols-outlined">
+								{activeNotifictions.length === 0 ? "notifications" : "notifications_active"}
+							</span>
 
 							{activeNotifictions.length > 0 && <div className={styles.active}>{activeNotifictions.length}</div>}
 						</button>
@@ -87,8 +91,11 @@ function Header({ user, setUser }) {
 							<span className="material-symbols-outlined">person</span>
 						</button>
 						<div className={`${styles.dropdownMenu} dropdown-menu hidden`}>
+							<Link className={styles.dropdownItem} href="/profile">
+								My Profile
+							</Link>
 							<Link className={styles.dropdownItem} href="/profile/edit">
-								Edit profile
+								Edit Profile
 							</Link>
 							<button className={styles.dropdownItem} onClick={onLogout}>
 								Logout

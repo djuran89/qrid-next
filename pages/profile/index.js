@@ -3,6 +3,8 @@ import Router from "next/router";
 import QRCode from "react-qr-code";
 import Header from "@/components/header/header";
 
+import styles from "./styles.module.scss";
+
 function Profile({ user, setUser }) {
 	if (!user) Router.push("/");
 	if (!user) return;
@@ -10,8 +12,16 @@ function Profile({ user, setUser }) {
 	return (
 		<>
 			<Header user={user} setUser={setUser} />
-			<div className="hard-center">
-				<QRCode value={`${process.env.APPURL}/send/${user._id}`} />
+			<div className="container">
+				<div className={`${styles.qrcode}`}>
+					<QRCode value={`${process.env.APPURL}/send/${user._id}`} />
+					<div className={`${styles.info}`}>Any one who scan this QR code will sent his information to you.</div>
+				</div>
+{/* 
+				<div className={`${styles.buttons}`}>
+					<button className={`btn btn-primary btn-full btn-big`}>Reseve code</button>
+					<button className={`btn btn-secondary btn-full btn-big`}>Send code</button>
+				</div> */}
 			</div>
 		</>
 	);

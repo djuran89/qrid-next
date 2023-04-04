@@ -14,6 +14,21 @@ export const Input = ({ className, type, name, placeholder, label, value, onChan
 		}
 	};
 
+	const pattern = (type) => {
+		switch (type) {
+			case "email":
+				return "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$";
+			case "number":
+				return "\\d*";
+			case "phone":
+				return `[\\+()]*(?:\\d[\\s\\-\\.()xX]*){10,14}`;
+			case "tel":
+				return `[\\+()]*(?:\\d[\\s\\-\\.()xX]*){10,14}`;
+			default:
+				return ".*";
+		}
+	};
+
 	return (
 		<div className={styles.inputGroup}>
 			<label>
@@ -28,10 +43,11 @@ export const Input = ({ className, type, name, placeholder, label, value, onChan
 				)}
 				<input
 					className={styles.input}
-					value={value}
+					value={value || ""}
 					onChange={onChange}
 					type={dynamicType}
 					name={name}
+					pattern={pattern(type)}
 					placeholder={placeholder}
 					required={required}
 				/>
@@ -63,6 +79,21 @@ export const Form = ({ children, onSubmit }) => {
 		<form className={styles.formGroup} onSubmit={onSubmitForm}>
 			{children}
 		</form>
+	);
+};
+
+export const Row = ({ children }) => {
+	return <div className={styles.row}>{children}</div>;
+};
+
+export const Avatar = ({ name }) => {
+	const [firstLetter, secondLetter] = name.split(" ");
+
+	return (
+		<div className={styles.avatar}>
+			<div>{firstLetter[0]}</div>
+			<div>{secondLetter[0]}</div>
+		</div>
 	);
 };
 

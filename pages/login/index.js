@@ -31,8 +31,22 @@ function Login({ user, setUser, translate }) {
 			<SubHeader title="Login" />
 			<div className="container hard-center width-100">
 				<Form onSubmit={onSubmit}>
-					<Input value={email} onChange={(e) => setEmail(e.target.value)} type="text" name="email" label={translate.email} required={true} />
-					<Input value={password} onChange={(e) => setPassword(e.target.value)} type="password" name="password" label={translate.password} required={true} />
+					<Input
+						value={email}
+						onChange={(e) => setEmail(e.target.value)}
+						type="text"
+						name="email"
+						label={translate.email}
+						required={true}
+					/>
+					<Input
+						value={password}
+						onChange={(e) => setPassword(e.target.value)}
+						type="password"
+						name="password"
+						label={translate.password}
+						required={true}
+					/>
 					<Button disabled={btnDisabled}>{translate.login}</Button>
 				</Form>
 			</div>

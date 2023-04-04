@@ -66,6 +66,7 @@
 		padding-top: 8px;
 		border-radius: 6px;
 		background-color: var(--inputBG);
+		color: var(--primaryTextColor);
 	}
 	label {
 		color: var(--lableText);
@@ -79,4 +80,21 @@
 		top: 10px;
 		font-size: 10px;
 	}
+	/* Chrome, Safari, Edge, Opera */
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+		color: var(--primaryTextColor);
+	}
+
+	/* Firefox */
+	input[type="number"] {
+		-moz-appearance: textfield;
+		color: var(--primaryTextColor);
+	}
+}
+.row {
+	display: flex;
+	gap: 16px;
 }

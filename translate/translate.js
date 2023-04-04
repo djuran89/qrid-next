@@ -35,7 +35,7 @@ const translate = {
 		search: "Search",
 		confirmCode: "Enter the confirmation code we sent to",
 		homePageMessage: "Create profile easily and securely share your information with others.",
-		haveProfile: "You allready hace profile?",
+		haveProfile: "You allready have profile?",
 		enterCode: "Enter confirm code",
 		getProfile: "Get your profile",
 		createProfile: "Create profile",
@@ -50,6 +50,7 @@ const translate = {
 		createYourProfile: "Create your profile",
 		loading: "Loading...",
 		sendYourInfo: "Send your information",
+		zipcode: "Zipcode",
 	},
 	de: {
 		firstname: "Vorname",
