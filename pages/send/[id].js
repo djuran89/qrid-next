@@ -10,10 +10,10 @@ import UserForm from "@/components/form/userForm";
 import styles from "./send.module.scss";
 
 const SendProfile = ({ user, setUser, translate }) => {
-	const { id } = Router.query;
 	const [loading, setLoading] = React.useState(true);
 	const [errorMessage, setErrorMessage] = React.useState(null);
 	const [successMessage, setSuccessMessage] = React.useState(null);
+	const { id } = Router.query;
 
 	React.useEffect(() => {
 		axios

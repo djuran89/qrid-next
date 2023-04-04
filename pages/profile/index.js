@@ -11,9 +11,7 @@ import { errorHandler } from "@/utility/msgHandler";
 import Link from "next/link";
 
 function Profile({ user, setUser }) {
-	if (!user) Router.push("/");
-	if (!user) return;
-	const [showReseveQRCode, setShowReseveQRCode] = React.useState(false);
+	const [showReseveQRCode, setShowReseveQRCode] = React.useState(true);
 	const [isProfileValid, setIsProfileValid] = React.useState(null);
 
 	React.useEffect(() => {
@@ -21,6 +19,7 @@ function Profile({ user, setUser }) {
 	}, []);
 
 	const checkProfileValid = () => {
+		if (!user) return false;
 		if (
 			!user.firstname ||
 			!user.lastname ||
@@ -36,6 +35,8 @@ function Profile({ user, setUser }) {
 		setIsProfileValid(true);
 	};
 
+	if (!user) Router.push("/");
+	if (!user) return;
 	if (isProfileValid === null) return null;
 	return (
 		<>
@@ -47,10 +48,10 @@ function Profile({ user, setUser }) {
 					<div className={`${styles.buttons}`}>
 						<div className={styles.buttonHolder}>
 							<button className={`btn btn-primary btn-full btn-big`} onClick={() => setShowReseveQRCode(true)}>
-								Reseve code
+								Receive information
 							</button>
 							<button className={`btn btn-secondary btn-full btn-big`} onClick={() => setShowReseveQRCode(false)}>
-								Send code
+								Send information
 							</button>
 						</div>
 					</div>
@@ -74,7 +75,7 @@ const ShowProfileInvalid = () => {
 					<div>
 						Your profile is not active yet.
 						<br />
-						Plase go edit profile and fill all information to be able to use our aplication.{" "}
+						Plase go edit profile and fill all information to be able to use our aplication.
 						<Link className="text-primary" href="/profile/edit">
 							Edit profile
 						</Link>
@@ -91,11 +92,11 @@ const ReseveQR = ({ user }) => {
 
 			<div className={styles.validCode}>
 				<div className={styles.validInfo}>
-					<span className={`material-symbols-outlined ${styles.icon}`}>all_inclusive</span> QR valide all time
+					<span className={`material-symbols-outlined ${styles.icon}`}>all_inclusive</span> QR valide for all time
 				</div>
 			</div>
 
-			<div className={`${styles.info}`}>{translate.fistQRInfo}</div>
+			<div className={`${styles.info}`}>Who scan this QR code you will receive his information.</div>
 		</div>
 	);
 };
@@ -159,7 +160,9 @@ const SendQR = ({ user }) => {
 				</div>
 			</div>
 
-			<div className={`${styles.info}`}>{translate.secoundQRInfo}</div>
+			<div className={`${styles.info}`}>{`Any one who scan this QR code will see your information. ${(
+				<br />
+			)}After code expire no one can't see your infomation.`}</div>
 		</div>
 	);
 };

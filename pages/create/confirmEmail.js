@@ -7,11 +7,11 @@ import { Button, Form, Input } from "@/components/form/form";
 import SubHeader from "@/components/header/subHeader";
 
 function ConfirmEamil({ user, translate }) {
+	const [code, setCode] = React.useState("");
+	const { email } = Router.query;
+
 	if (user) Router.push("/profile");
 	if (user) return;
-
-	const { email } = Router.query;
-	const [code, setCode] = React.useState("");
 
 	const onSubmit = async (e) => {
 		const btnSubmit = e.target.getElementsByTagName("button")[0];

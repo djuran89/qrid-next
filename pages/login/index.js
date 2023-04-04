@@ -7,12 +7,12 @@ import { errorHandler } from "@/utility/msgHandler";
 import SubHeader from "@/components/header/subHeader";
 
 function Login({ user, setUser, translate }) {
-	if (user !== null) Router.push("/profile");
-	if (user !== null) return;
-
 	const [email, setEmail] = React.useState("");
 	const [password, setPassword] = React.useState("");
 	const [btnDisabled, setBtnDisabled] = React.useState(false);
+
+	if (user !== null) Router.push("/profile");
+	if (user !== null) return;
 
 	const onSubmit = async () => {
 		try {

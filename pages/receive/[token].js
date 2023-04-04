@@ -9,8 +9,8 @@ import SubHeader from "@/components/header/subHeader";
 import { errorHandler } from "@/utility/msgHandler";
 
 const ReceiveProfile = ({ translate }) => {
-	const { token } = Router.query;
 	const [profile, setProfile] = React.useState(null);
+	const { token } = Router.query;
 	const headers = { Authorization: `Bearer ${token}` };
 
 	React.useEffect(() => {
