@@ -75,7 +75,7 @@ const ShowProfileInvalid = () => {
 						Your profile is not active yet.
 						<br />
 						Plase go edit profile and fill all information to be able to use our aplication.{" "}
-						<Link className="text-secondary" href="/profile/edit">
+						<Link className="text-primary" href="/profile/edit">
 							Edit profile
 						</Link>
 					</div>
