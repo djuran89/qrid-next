@@ -102,6 +102,10 @@
 			text-align: left;
 			font-size: 14px;
 			text-decoration: none;
+			width: 100%;
+		}
+		button.dropdownItem {
+			cursor: pointer;
 		}
 		.dropdownItem:hover {
 			background-color: rgba(0, 0, 0, 0.05);

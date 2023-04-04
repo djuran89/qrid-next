@@ -7,6 +7,7 @@ import { errorHandler } from "@/utility/msgHandler";
 
 import styles from "./header.module.scss";
 import Link from "next/link";
+import translate from "@/translate/translate";
 
 function Header({ user, setUser }) {
 	const [notifications, setNotifications] = React.useState([]);
@@ -81,10 +82,10 @@ function Header({ user, setUser }) {
 								<Notification notification={notification} key={key} />
 							))}
 							{notifications.length === 0 ? (
-								<div className={styles.dropdownItem}>No notifications</div>
+								<div className={styles.dropdownItem}>{translate.noNotifications}</div>
 							) : (
 								<Link className={`${styles.dropdownItem} ${styles.lastItem}`} href="/">
-									See all notification
+									{translate.allNotifications}
 								</Link>
 							)}
 						</div>
@@ -96,13 +97,13 @@ function Header({ user, setUser }) {
 						</button>
 						<div className={`${styles.dropdownMenu} dropdown-menu hidden`}>
 							<Link className={styles.dropdownItem} href="/profile">
-								My Profile
+								{translate.myProfile}
 							</Link>
 							<Link className={styles.dropdownItem} href="/profile/edit">
-								Edit Profile
+								{translate.editProfile}
 							</Link>
 							<button className={styles.dropdownItem} onClick={onLogout}>
-								Logout
+								{translate.logout}
 							</button>
 						</div>
 					</div>
