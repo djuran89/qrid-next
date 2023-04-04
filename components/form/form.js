@@ -63,9 +63,9 @@ export const Button = ({ ref, title, children, onClick, onChange, onLink, classN
 		onClick && onClick();
 		onLink && Router.push(onLink);
 	};
-
 	return (
 		<button ref={ref} className={className} onClick={onClickBtn} onChange={onChange} disabled={disabled}>
+			{disabled && children === "Login" && <span className="material-symbols-outlined spining">autorenew</span>}
 			{title || children}
 		</button>
 	);

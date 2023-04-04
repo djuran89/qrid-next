@@ -15,8 +15,12 @@
 	animation-delay: -0.5s;
 }
 .spiner {
-    text-align: center;
-    /* color: var(--primaryColor); */
+	text-align: center;
+	/* color: var(--primaryColor); */
+}
+.spining {
+	margin-right: 8px;
+	animation: rotate 1000ms ease-in-out infinite;
 }
 @keyframes lds-ripple {
 	0% {
@@ -46,5 +50,13 @@
 		width: 72px;
 		height: 72px;
 		opacity: 0;
+	}
+}
+@keyframes rotate {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
 	}
 }
