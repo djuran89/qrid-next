@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import Router from "next/router";
 import QRCode from "react-qr-code";
@@ -112,8 +112,13 @@ const SendQR = ({ user }) => {
 	React.useEffect(() => {
 		let timer = null;
 		getToken().then(() => (timer = intervalFn(validTokenTime)));
+
 		return () => clearInterval(timer);
 	}, []);
+
+	React.useEffect(() => {
+		return () => deleteToken(token);
+	}, [token]);
 
 	function intervalFn(time) {
 		setQrCodeColor(primaryColor);
@@ -143,8 +148,18 @@ const SendQR = ({ user }) => {
 		});
 	};
 
+	const deleteToken = async (token) => {
+		try {
+			const headers = { Authorization: `Bearer ${token}` };
+			await axios.delete(`/qrcode/token`, { headers });
+		} catch (err) {
+			errorHandler(err);
+		}
+	};
+
 	return (
 		<div className={`${styles.qrcode}`}>
+			{/* <QRCodeComponent value={"test"} /> */}
 			<QRCode fgColor={qrCodeColor} value={`${process.env.APPURL}/receive/${token}`} />
 
 			<div className={styles.validCode}>
@@ -160,11 +175,41 @@ const SendQR = ({ user }) => {
 				</div>
 			</div>
 
-			<div className={`${styles.info}`}>{`Any one who scan this QR code will see your information. ${(
+			<div className={`${styles.info}`}>
+				{`Any one who scan this QR code will see your information.`}
 				<br />
-			)}After code expire no one can't see your infomation.`}</div>
+				{`After code expire no one can't see your infomation.`}
+			</div>
 		</div>
 	);
 };
+
+class QRCodeComponent extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			qrCode: null,
+		};
+	}
+
+	componentDidMount() {
+		this.setState({ qrCode: new QRCode(this.qrCode, { text: this.props.value, width: 256, height: 256 }) });
+	}
+
+	componentDidUpdate(prevProps) {
+		if (prevProps.value !== this.props.value) {
+			this.state.qrCode.clear();
+			this.state.qrCode.makeCode(this.props.value);
+		}
+	}
+
+	componentWillUnmount() {
+		console.log("Unmount");
+	}
+
+	render() {
+		return <div ref={(el) => (this.qrCode = el)} />;
+	}
+}
 
 export default Profile;

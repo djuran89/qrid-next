@@ -1,0 +1,17 @@
+.badge {
+	display: block;
+	text-align: center;
+	font-size: 18px;
+	width: 100%;
+}
+.wrong {
+	color: var(--redColor);
+}
+.success {
+	color: var(--primaryColor);
+}
+.icon span {
+	font-size: 96px;
+	margin-bottom: 16px;
+	font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 0, "opsz" 48;
+}
