@@ -4,8 +4,6 @@ import Header from "@/components/header/header";
 import { errorHandler, successHandler } from "@/utility/msgHandler";
 import { Input, Button, Form } from "@/components/form/form";
 
-import styles from "./styles.module.scss";
-
 function EditProfile({ user, setUser, translate }) {
 	if (!user) Router.push("/");
 	if (!user) return;
