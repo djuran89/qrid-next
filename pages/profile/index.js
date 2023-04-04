@@ -8,6 +8,7 @@ import translate from "@/translate/translate";
 
 import styles from "./styles.module.scss";
 import { errorHandler } from "@/utility/msgHandler";
+import Loading from "@/components/loading/loading";
 
 function Profile({ user, setUser }) {
 	if (!user) Router.push("/");
@@ -53,7 +54,7 @@ const ReseveQR = ({ user }) => {
 };
 
 const SendQR = ({ user }) => {
-	const validTokenTime = 5;
+	const validTokenTime = 180;
 	const primaryColor = getComputedStyle(document.documentElement).getPropertyValue("--primaryColor");
 	const redColor = getComputedStyle(document.documentElement).getPropertyValue("--redColor");
 	const [qrCodeColor, setQrCodeColor] = React.useState(primaryColor);
@@ -94,7 +95,6 @@ const SendQR = ({ user }) => {
 		});
 	};
 
-	if (!token) return null;
 	return (
 		<div className={`${styles.qrcode}`}>
 			<QRCode fgColor={qrCodeColor} value={`${process.env.APPURL}/receive/${token}`} />
