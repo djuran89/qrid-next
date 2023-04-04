@@ -80,9 +80,13 @@ function Header({ user, setUser }) {
 							{notifications.map((notification, key) => (
 								<Notification notification={notification} key={key} />
 							))}
-							<Link className={`${styles.dropdownItem} ${styles.lastItem}`} href="/">
-								See all notification
-							</Link>
+							{notifications.length === 0 ? (
+								<div className={styles.dropdownItem}>No notifications</div>
+							) : (
+								<Link className={`${styles.dropdownItem} ${styles.lastItem}`} href="/">
+									See all notification
+								</Link>
+							)}
 						</div>
 					</div>
 
