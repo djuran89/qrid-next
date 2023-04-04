@@ -8,35 +8,82 @@ import translate from "@/translate/translate";
 
 import styles from "./styles.module.scss";
 import { errorHandler } from "@/utility/msgHandler";
-import Loading from "@/components/loading/loading";
+import Link from "next/link";
 
 function Profile({ user, setUser }) {
 	if (!user) Router.push("/");
 	if (!user) return;
-
 	const [showReseveQRCode, setShowReseveQRCode] = React.useState(false);
+	const [isProfileValid, setIsProfileValid] = React.useState(null);
 
+	React.useEffect(() => {
+		checkProfileValid();
+	}, []);
+
+	const checkProfileValid = () => {
+		if (
+			!user.firstname ||
+			!user.lastname ||
+			!user.address ||
+			!user.city ||
+			!user.country ||
+			!user.idnumber ||
+			!user.zipcode ||
+			!user.email ||
+			!user.phone
+		)
+			return setIsProfileValid(false);
+		setIsProfileValid(true);
+	};
+
+	if (isProfileValid === null) return null;
 	return (
 		<>
 			<Header user={user} setUser={setUser} />
-			<div className={`${styles.qrHolder}`}>
-				{showReseveQRCode ? <ReseveQR user={user} /> : <SendQR user={user} />}
+			{isProfileValid ? (
+				<div className={`${styles.qrHolder}`}>
+					{showReseveQRCode ? <ReseveQR user={user} /> : <SendQR user={user} />}
 
-				<div className={`${styles.buttons}`}>
-					<div className={styles.buttonHolder}>
-						<button className={`btn btn-primary btn-full btn-big`} onClick={() => setShowReseveQRCode(true)}>
-							Reseve code
-						</button>
-						<button className={`btn btn-secondary btn-full btn-big`} onClick={() => setShowReseveQRCode(false)}>
-							Send code
-						</button>
+					<div className={`${styles.buttons}`}>
+						<div className={styles.buttonHolder}>
+							<button className={`btn btn-primary btn-full btn-big`} onClick={() => setShowReseveQRCode(true)}>
+								Reseve code
+							</button>
+							<button className={`btn btn-secondary btn-full btn-big`} onClick={() => setShowReseveQRCode(false)}>
+								Send code
+							</button>
+						</div>
 					</div>
 				</div>
-			</div>
+			) : (
+				<ShowProfileInvalid />
+			)}
 		</>
 	);
 }
 
+const ShowProfileInvalid = () => {
+	return (
+		<div className="container">
+			<div className={styles.alert}>
+				<div className={styles.icon}>
+					<span className={`material-symbols-outlined`}>warning</span>
+				</div>
+				<div className={styles.alertText}>
+					<div className={styles.alertTitle}>Not active profile</div>
+					<div>
+						Your profile is not active yet.
+						<br />
+						Plase go edit profile and fill all information to be able to use our aplication.{" "}
+						<Link className="text-secondary" href="/profile/edit">
+							Edit profile
+						</Link>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
+};
 const ReseveQR = ({ user }) => {
 	return (
 		<div className={`${styles.qrcode}`}>

@@ -1,7 +1,7 @@
 import { Button, Form, Input, Or } from "@/components/form/form";
 import translate from "@/translate/translate";
 
-function ProfileForm({ user, setUser, onSubmit, preview, showEmail, className }) {
+function ProfileForm({ user, setUser, onSubmit, preview, showEmail, className, btnTitle = "Send" }) {
 	return (
 		<div className={className}>
 			<Form onSubmit={onSubmit}>
@@ -88,7 +88,7 @@ function ProfileForm({ user, setUser, onSubmit, preview, showEmail, className })
 					required={true}
 					disabled={preview}
 				/>
-				{!preview && <Button>{translate.send}</Button>}
+				{!preview && <Button>{btnTitle}</Button>}
 			</Form>
 		</div>
 	);

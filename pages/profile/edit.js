@@ -23,7 +23,7 @@ function EditProfile({ user, setUser, translate }) {
 		<>
 			<Header user={user} setUser={setUser} />
 
-			<ProfileForm className="container" onSubmit={onSubmit} user={user} setUser={setUser} translate={translate} />
+			<ProfileForm className="container" btnTitle="Save" onSubmit={onSubmit} user={user} setUser={setUser} translate={translate} />
 		</>
 	);
 }
