@@ -93,20 +93,24 @@ hr {
 	cursor: not-allowed;
 }
 .btn-big {
-	font-size: 16px;
-	padding: 1rem 0;
-	font-weight: bold;
-	text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.2);
+	font-size: 14px;
+	padding: 0.5rem 0;
+	font-weight: 300;
+	text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.4);
 }
 .btn-big.btn-primary {
 	border: 2px solid darken($primaryColor, 5%);
 	border-bottom-color: lighten($primaryColor, 5%);
 	border-right-color: lighten($primaryColor, 5%);
+	border: 0;
+	border-bottom: 2px solid darken($primaryColor, 5%);
 }
 .btn-bit.btn-secondary {
 	border: 2px solid darken($secoundaryColor, 5%);
 	border-bottom-color: lighten($secoundaryColor, 5%);
 	border-right-color: lighten($secoundaryColor, 5%);
+	border: 0;
+	border-bottom: 2px solid darken($secoundaryColor, 5%);
 }
 .btn-empty {
 	font-size: 14px;

@@ -51,13 +51,14 @@ const translate = {
 		loading: "Loading...",
 		sendYourInfo: "Send your information",
 		zipcode: "Zipcode",
-		fistQRInfo: "Any one who scan this QR code will sent his information to you.",
 		editProfile: "Edit profile",
 		myProfile: "My profile",
 		logout: "Logout",
 		allNotifications: "All notifications",
 		noNotifications: "No notifications",
 		notifications: "Notifications",
+		fistQRInfo: "Who scan this QR code will send his information to you.",
+		secoundQRInfo: `Any one who scan this QR code will see your information. After code expire no one can't see your infomation.`,
 	},
 	de: {
 		firstname: "Vorname",
@@ -110,13 +111,15 @@ const translate = {
 		loading: "Wird geladen...",
 		sendYourInfo: "Senden Sie Ihre Informationen",
 		zipcode: "Postleitzahl",
-		fistQRInfo: "Jeder, der diesen QR-Code scannen, wird seine Informationen an Sie senden.",
 		editProfile: "Profil bearbeiten",
 		myProfile: "Mein Profil",
 		logout: "Abmelden",
 		allNotifications: "Alle Benachrichtigungen",
 		noNotifications: "Keine Benachrichtigungen",
 		notifications: "Benachrichtigungen",
+		fistQRInfo: "Jeder, der diesen QR-Code scannen, wird seine Informationen an Sie senden.",
+		secoundQRInfo:
+			"Jeder, der diesen QR-Code scannen, wird Ihre Informationen sehen.\n Diese Informationen werden nicht in unserem Server gespeichert.",
 	},
 };
 

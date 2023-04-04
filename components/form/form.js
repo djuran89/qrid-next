@@ -3,7 +3,7 @@ import Router from "next/router";
 import styles from "./form.module.scss";
 import translate from "@/translate/translate";
 
-export const Input = ({ className, type, name, placeholder, label, value, onChange, required }) => {
+export const Input = ({ className, type, name, placeholder, label, value, onChange, required, disabled }) => {
 	const [dynamicType, setDynamicType] = useState(type);
 
 	const toggleType = () => {
@@ -50,6 +50,7 @@ export const Input = ({ className, type, name, placeholder, label, value, onChan
 					pattern={pattern(type)}
 					placeholder={placeholder}
 					required={required}
+					disabled={disabled}
 				/>
 				<div className={`${styles.labelGroup} ${value ? styles.active : ""}`}>{label}</div>
 			</label>

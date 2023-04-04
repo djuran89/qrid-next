@@ -1,22 +1,72 @@
-.left {
-	width: 200px;
-}
-.right {
-	flex: 1;
+.qrHolder {
+	position: fixed;
+	top: 0px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: calc(100vh - var(--headerHeight));
+	padding-top: var(--headerHeight);
+	overflow: hidden;
+	width: 100%;
 }
 .qrcode {
 	display: flex;
-	margin-top: 100px;
+	// margin-top: 40px;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
 	.info {
-		font-size: 18px;
-		margin-top: 20px;
-		width: 360px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 12px;
+		width: 420px;
 		text-align: center;
+		color: var(--lightGray);
+		text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5);
+		height: 40px;
+		padding-inline: 16px;
+	}
+	.validCode {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 14px;
 		color: var(--darkGray);
 		text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5);
+		height: 70px;
+		flex-direction: row;
+		gap: 8px;
+		width: 256px;
+		.validInfo {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			.icon {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				color: var(--primaryColor);
+				height: 42px;
+				width: 42px;
+				cursor: pointer;
+			}
+		}
+
+		.progress {
+			position: relative;
+			height: 3px;
+			width: 100%;
+			background-color: var(--lightGray);
+			.progressBar {
+				position: absolute;
+				height: 100%;
+				background-color: var(--darkGray);
+				width: 100%;
+			}
+		}
 	}
 }
 
@@ -24,10 +74,23 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-top: 40px;
-	gap: 16px;
+	margin-top: 20px;
 	padding-inline: 16px;
+	width: 100%;
+	.buttonHolder {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		gap: 16px;
+	}
 	.btn {
 		margin: 0 10px;
+	}
+}
+
+@media (min-width: 768px) {
+	.buttons {
+		width: 360px;
 	}
 }

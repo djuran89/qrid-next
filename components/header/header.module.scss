@@ -4,6 +4,8 @@
 	border-bottom: 1px solid var(--lightGray);
 	background-color: #fff;
 	border-color: var(--borderColor);
+	position: sticky;
+	z-index: 9;
 	.content {
 		position: relative;
 		display: flex;
