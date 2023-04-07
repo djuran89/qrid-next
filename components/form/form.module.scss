@@ -61,12 +61,14 @@
 		border: 1px solid var(--borderColor);
 		outline: 0;
 		width: 100%;
+		min-width: calc(100% - 12px);
 		height: 42px;
 		padding-inline: 16px;
 		padding-top: 8px;
 		border-radius: 6px;
 		background-color: var(--inputBG);
 		color: var(--primaryTextColor);
+		text-align: left !important;
 	}
 	label {
 		color: var(--lableText);

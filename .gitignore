@@ -30,3 +30,8 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# next.js build output
+/certificates
+server.js
+test.js

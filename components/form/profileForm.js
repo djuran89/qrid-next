@@ -88,6 +88,16 @@ function ProfileForm({ user, setUser, onSubmit, preview, showEmail, className, b
 					required={true}
 					disabled={preview}
 				/>
+				<Input
+					name="Date of Birth"
+					type="date"
+					label={"Date of Birth"}
+					value={user.dateOfBirth || ""}
+					onChange={(e) => setUser({ ...user, dateOfBirth: e.target.value })}
+					required={true}
+					disabled={preview}
+				/>
+				{/* <input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31"></input> */}
 				{!preview && <Button>{btnTitle}</Button>}
 			</Form>
 		</div>
