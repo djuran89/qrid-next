@@ -8,7 +8,8 @@ const ProfileDocuments = ({ user, className, imageURL }) => {
 					{imageURL ? (
 						<img src={imageURL} alt="Document" />
 					) : (
-						user.document && <img src={`/profiles/documents/${user.document}`} alt="Document" />
+						// user.document && <img src={`/profiles/documents/${user.document}`} alt="Document" />
+						user.document && <img src={user.document} alt="Document" />
 					)}
 				</div>
 				<div className={styles.signatureHolder}>{user.signature && <img src={user.signature} alt="Signature" />}</div>
