@@ -14,6 +14,18 @@ function Header({ user, setUser }) {
 	const [activeNotifictions, setActiveNotifictions] = React.useState([]);
 	const [playNotification, setPlayNotification] = React.useState(false);
 
+	// Run Socket.io
+	// React.useEffect(() => {
+	// 	const socket = io(process.env.URL);
+	// 	socket.on(user._id, (data) => {
+	// 		setNotifications([data, ...notifications]);
+	// 		playNotification && new Audio("/mp3/Notification.mp3").play();
+	// 	});
+
+	// 	setActiveNotifictions([...notifications.filter((el) => el.active)]);
+	// }, [notifications]);
+
+	// Get Notifications
 	React.useEffect(() => {
 		axios
 			.get("/profile/notification")
@@ -22,16 +34,6 @@ function Header({ user, setUser }) {
 			})
 			.catch((err) => errorHandler(err));
 	}, []);
-
-	React.useEffect(() => {
-		const socket = io(process.env.URL);
-		socket.on(user._id, (data) => {
-			setNotifications([data, ...notifications]);
-			playNotification && new Audio("/mp3/Notification.mp3").play();
-		});
-
-		setActiveNotifictions([...notifications.filter((el) => el.active)]);
-	}, [notifications]);
 
 	const onLogout = async () => {
 		try {
@@ -101,6 +103,12 @@ function Header({ user, setUser }) {
 							</Link>
 							<Link className={styles.dropdownItem} href="/profile/edit">
 								{translate.editProfile}
+							</Link>
+							<Link className={styles.dropdownItem} href="/camera">
+								Camera
+							</Link>
+							<Link className={styles.dropdownItem} href="/vision">
+								Vision
 							</Link>
 							<button className={styles.dropdownItem} onClick={onLogout}>
 								{translate.logout}

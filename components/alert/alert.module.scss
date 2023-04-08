@@ -1,0 +1,31 @@
+.alert {
+	display: flex;
+	margin: 16px;
+	align-items: center;
+	padding: 8px 16px;
+	width: calc(100% - 32px);
+	background-color: #fafafa;
+	border: 1px solid var(--borderColor);
+	gap: 16px;
+	border-radius: 8px;
+	.alertText {
+		display: flex;
+		flex-direction: column;
+		text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5);
+		gap: 8px;
+		font-size: 12px;
+		color: var(--lightGray);
+		.alertTitle {
+			font-size: 16px;
+			color: var(--darkGray);
+		}
+	}
+
+	.icon {
+		span {
+			font-size: 32px;
+			color: #ffa559;
+			text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5);
+		}
+	}
+}

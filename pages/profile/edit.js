@@ -1,11 +1,17 @@
+import { useState } from "react";
 import axios from "axios";
 import Router from "next/router";
+
 import Header from "@/components/header/header";
-import { errorHandler, successHandler } from "@/utility/msgHandler";
-import { Input, Button, Form } from "@/components/form/form";
 import ProfileForm from "@/components/form/profileForm";
+import ProfileDocuments from "@/components/profile/profileDocuments";
+
+import { Button, Row } from "@/components/form/form";
+import { errorHandler, successHandler } from "@/utility/msgHandler";
 
 function EditProfile({ user, setUser, translate }) {
+	const [fileName, setFileName] = useState("");
+	const [imageURL, setImageURL] = useState("");
 	if (!user) Router.push("/");
 	if (!user) return;
 
@@ -19,11 +25,55 @@ function EditProfile({ user, setUser, translate }) {
 		}
 	};
 
+	const onUploadFile = async () => {
+		try {
+			const file = document.getElementById("file").files[0];
+			const reader = new FileReader();
+			reader.readAsDataURL(file);
+
+			reader.onload = async () => {
+				const image = reader.result;
+				const res = await axios.post("/profile/upload", { image });
+				setUser(res);
+				setImageURL(image);
+				setFileName("");
+				successHandler("Document uploaded successfully");
+			};
+		} catch (err) {
+			errorHandler(err);
+		}
+	};
+
+	const onClickBtn = () => document.getElementById("file").click();
+
+	const onChangeFile = (e) => {
+		const fileName = e.target.files[0].name.length > 9 ? e.target.files[0].name.slice(0, 9) + "..." : e.target.files[0].name;
+		setFileName(fileName);
+	};
+
+	const onSignature = () => Router.push("/profile/signature");
+
 	return (
 		<>
 			<Header user={user} setUser={setUser} />
 
+			<div className="container">
+				<Row>
+					<Button icon={"description"} className={"btn-secondary"} onClick={onSignature}>
+						Signature
+					</Button>
+					<Button icon={"description"} className={"btn-secondary"} onClick={onClickBtn}>
+						{fileName ? fileName : `Document`}
+					</Button>
+
+					{fileName && <Button onClick={onUploadFile}>Upload</Button>}
+				</Row>
+
+				<ProfileDocuments user={user} imageURL={imageURL} />
+			</div>
 			<ProfileForm className="container" btnTitle="Save" onSubmit={onSubmit} user={user} setUser={setUser} translate={translate} />
+
+			<input className="hidden" type="file" name="file" id="file" accept="image/png, image/jpeg" onChange={onChangeFile} />
 		</>
 	);
 }

@@ -59,13 +59,23 @@ hr {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 0.5rem 1rem;
-	border-radius: 0.5rem;
 	font-size: 14px;
 	border: 0;
 	outline: 0;
+	padding-inline: 16px;
 	color: var(--primaryTextColor);
 	background-color: transparent;
+	font-weight: 300;
+	border-radius: 0.4rem;
+	box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.3);
+	height: calc(32px + 2px);
+	padding-bottom: 2px;
+	text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.25);
+	gap: 8px;
+	cursor: pointer;
+	span {
+		font-size: 1.1rem;
+	}
 }
 .btn-full {
 	width: 100%;
@@ -73,9 +83,6 @@ hr {
 .btn-primary {
 	background-color: var(--primaryColor);
 	color: #fff;
-	padding: 0.5rem 1rem;
-	border-radius: 0.5rem;
-	cursor: pointer;
 }
 .btn-primary:disabled {
 	background-color: lighten($primaryColor, 5%);
@@ -84,9 +91,6 @@ hr {
 .btn-secondary {
 	background-color: var(--secoundaryColor);
 	color: #fff;
-	padding: 0.5rem 1rem;
-	border-radius: 0.5rem;
-	cursor: pointer;
 }
 .btn-secondary:disabled {
 	background-color: lighten($secoundaryColor, 5%);
@@ -117,6 +121,8 @@ hr {
 	background-color: transparent;
 	border: 0;
 	outline: 0;
+	box-shadow: 0 0 0;
+	text-shadow: 0 0 0;
 }
 .text-primary {
 	color: var(--primaryTextColor);

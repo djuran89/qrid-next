@@ -7,9 +7,9 @@ import Loading from "@/components/loading/loading";
 import translate from "@/translate/translate";
 import "@/styles/globals.scss";
 import "@/styles/spiner.css";
-import "@/styles/video.css";
+// import "@/styles/video.css";
 
-process.env.URL = process.env.NODE_ENV === "development" ? "https://localhost:8080/api" : "http://18.195.49.234/api";
+process.env.URL = process.env.NODE_ENV === "development" ? "https://192.168.0.21:8080/api" : "http://18.195.49.234/api";
 process.env.APPURL = process.env.NODE_ENV === "development" ? "https://192.168.0.21:3000" : "http://18.195.49.234";
 // AXIOS CONFIG
 axios.defaults.baseURL = process.env.URL;

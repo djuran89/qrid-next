@@ -16,7 +16,7 @@ function SubHeader({ title }) {
 		<header className={styles.subHeader}>
 			<div className={styles.content}>
 				<h1>{title}</h1>
-				<button className="btn" onClick={goBack}>
+				<button className="btn btn-empty" onClick={goBack}>
 					<span className="material-symbols-outlined">arrow_back_ios</span>
 				</button>
 			</div>

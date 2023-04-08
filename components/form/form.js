@@ -58,15 +58,17 @@ export const Input = ({ className, type, name, placeholder, label, value, onChan
 	);
 };
 
-export const Button = ({ ref, title, children, onClick, onChange, onLink, className = "btn btn-primary btn-full", disabled }) => {
+export const Button = ({ ref, title, children, onClick, onChange, onLink, className, disabled, icon }) => {
 	const onClickBtn = () => {
 		onClick && onClick();
 		onLink && Router.push(onLink);
 	};
+	const showReload = disabled && children === "Login";
 	return (
-		<button ref={ref} className={className} onClick={onClickBtn} onChange={onChange} disabled={disabled}>
-			{disabled && children === "Login" && <span className="material-symbols-outlined spining">autorenew</span>}
-			{title || children}
+		<button ref={ref} className={`btn btn-primary ${className}`} onClick={onClickBtn} onChange={onChange} disabled={disabled}>
+			{showReload && <span className="material-symbols-outlined spining">autorenew</span>}
+			{icon && <span className="material-symbols-outlined">{icon}</span>}
+			{showReload ? "" : title || children}
 		</button>
 	);
 };
@@ -83,8 +85,8 @@ export const Form = ({ children, onSubmit }) => {
 	);
 };
 
-export const Row = ({ children }) => {
-	return <div className={styles.row}>{children}</div>;
+export const Row = ({ children, className }) => {
+	return <div className={`${styles.row} ${className}`}>{children}</div>;
 };
 
 export const Avatar = ({ name }) => {

@@ -47,7 +47,7 @@ function Login({ user, setUser, translate }) {
 						label={translate.password}
 						required={true}
 					/>
-					<Button disabled={btnDisabled}>{translate.login}</Button>
+					<Button className="btn-full" disabled={btnDisabled}>{translate.login}</Button>
 				</Form>
 			</div>
 		</>

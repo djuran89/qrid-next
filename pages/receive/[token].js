@@ -9,6 +9,7 @@ import SubHeader from "@/components/header/subHeader";
 import { errorHandler } from "@/utility/msgHandler";
 
 import styles from "./receive.module.scss";
+import ProfileDocuments from "@/components/profile/profileDocuments";
 
 const ReceiveProfile = ({ translate }) => {
 	const [profile, setProfile] = React.useState(null);
@@ -48,6 +49,7 @@ const ReceiveProfile = ({ translate }) => {
 	return (
 		<>
 			<SubHeader title={translate.profile} />
+			{!tokenExpired && <ProfileDocuments className="container" user={profile} />}
 			{!tokenExpired && <ProfileForm className="container" user={profile} preview={true} showEmail={true} />}
 		</>
 	);

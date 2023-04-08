@@ -1,24 +1,10 @@
-import { Button, Form, Input, Or, Row } from "@/components/form/form";
+import { Button, Form, Input, Or } from "@/components/form/form";
 import translate from "@/translate/translate";
-import Router from "next/router";
 
-import styles from "./form.module.scss";
-
-function ProfileForm({ user, setUser, onSubmit, preview, showEmail, className, btnTitle = "Send", cancel = false }) {
+function ProfileForm({ user, setUser, onSubmit, preview, showEmail, className, btnTitle = "Send" }) {
 	return (
 		<div className={className}>
 			<Form onSubmit={onSubmit}>
-				{showEmail && (
-					<Input
-						type="text"
-						name="email"
-						label={translate.email}
-						value={user.email || ""}
-						onChange={(e) => setUser({ ...user, email: e.target.value })}
-						required={true}
-						disabled={preview}
-					/>
-				)}
 				<Input
 					type="text"
 					name="firstname"
@@ -101,16 +87,7 @@ function ProfileForm({ user, setUser, onSubmit, preview, showEmail, className, b
 					disabled={preview}
 				/>
 				{/* <input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31"></input> */}
-				{!preview && (
-					<Row>
-						{cancel && (
-							<Button className="btn-full btn-secondary" onClick={() => Router.back()}>
-								Cancel
-							</Button>
-						)}
-						<Button className="btn-full">{btnTitle}</Button>
-					</Row>
-				)}
+				{!preview && <Button>{btnTitle}</Button>}
 			</Form>
 		</div>
 	);

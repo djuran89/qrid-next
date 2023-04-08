@@ -47,10 +47,10 @@ function Profile({ user, setUser }) {
 
 					<div className={`${styles.buttons}`}>
 						<div className={styles.buttonHolder}>
-							<button className={`btn btn-primary btn-full btn-big`} onClick={() => setShowReseveQRCode(true)}>
+							<button className={`btn btn-primary btn-full`} onClick={() => setShowReseveQRCode(true)}>
 								Receive information
 							</button>
-							<button className={`btn btn-secondary btn-full btn-big`} onClick={() => setShowReseveQRCode(false)}>
+							<button className={`btn btn-secondary btn-full`} onClick={() => setShowReseveQRCode(false)}>
 								Send information
 							</button>
 						</div>

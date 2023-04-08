@@ -32,6 +32,10 @@ yarn-error.log*
 .vercel
 
 # next.js build output
-/certificates
+/certificates/*
+/public/profiles/*/*.*
 server.js
-test.js
+
+vision.js
+/pages/profile/editCamera.js
+/pages/camera
