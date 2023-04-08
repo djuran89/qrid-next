@@ -104,12 +104,6 @@ function Header({ user, setUser }) {
 							<Link className={styles.dropdownItem} href="/profile/edit">
 								{translate.editProfile}
 							</Link>
-							<Link className={styles.dropdownItem} href="/camera">
-								Camera
-							</Link>
-							<Link className={styles.dropdownItem} href="/vision">
-								Vision
-							</Link>
 							<button className={styles.dropdownItem} onClick={onLogout}>
 								{translate.logout}
 							</button>
