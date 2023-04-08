@@ -25,19 +25,25 @@ function EditProfile({ user, setUser, translate }) {
 		}
 	};
 
-	const onUploadFile = async () => {
+	const onUploadFile = async (e) => {
 		try {
+			const btn = e.target;
 			const file = document.getElementById("file").files[0];
 			const reader = new FileReader();
+			const allowSize = 1024 * 1024 * 5; // 5MB
 			reader.readAsDataURL(file);
+
+			if (file.size > allowSize) return errorHandler("File size is too large");
 
 			reader.onload = async () => {
 				const image = reader.result;
+				btn.disabled = true;
 				const res = await axios.post("/profile/upload", { image });
 				setUser(res);
 				setImageURL(image);
 				setFileName("");
 				successHandler("Document uploaded successfully");
+				btn.disabled = false;
 			};
 		} catch (err) {
 			errorHandler(err);
@@ -59,7 +65,7 @@ function EditProfile({ user, setUser, translate }) {
 
 			<div className="container">
 				<Row>
-					<Button icon={"description"} className={"btn-secondary"} onClick={onSignature}>
+					<Button icon={"draw"} className={"btn-secondary"} onClick={onSignature}>
 						Signature
 					</Button>
 					<Button icon={"description"} className={"btn-secondary"} onClick={onClickBtn}>

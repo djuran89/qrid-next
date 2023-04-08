@@ -59,8 +59,8 @@ export const Input = ({ className, type, name, placeholder, label, value, onChan
 };
 
 export const Button = ({ ref, title, children, onClick, onChange, onLink, className, disabled, icon }) => {
-	const onClickBtn = () => {
-		onClick && onClick();
+	const onClickBtn = (e) => {
+		onClick && onClick(e);
 		onLink && Router.push(onLink);
 	};
 	const showReload = disabled && children === "Login";

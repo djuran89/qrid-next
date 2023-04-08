@@ -15,7 +15,7 @@ const configtToast = {
 	theme,
 };
 export function errorHandler(err, toastId) {
-	const message = err.response?.data?.msg || err.response?.data?.message || err.message;
+	const message = err.response?.data?.msg || err.response?.data?.message || err.message || err;
 	const statusCode = err.response?.status;
 
 	if (statusCode === 403) return Router.push("/403");
