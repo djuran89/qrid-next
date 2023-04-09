@@ -86,7 +86,11 @@ export const Form = ({ children, onSubmit }) => {
 };
 
 export const Row = ({ children, className }) => {
-	return <div className={`${styles.row} ${className}`}>{children}</div>;
+	return (
+		<div className={className}>
+			<div className={`${styles.row}`}>{children}</div>
+		</div>
+	);
 };
 
 export const Avatar = ({ name }) => {

@@ -12,18 +12,21 @@ function Signature({ user, setUser, translate }) {
 	const [signaturePad, setSignaturePad] = useState(null);
 	const [canvasHeight, setCanvasHeight] = useState(null);
 	const [canvasWidth, setCanvasWidth] = useState(null);
+	const [displaySignature, setDisplaySignature] = useState(null);
 
+	// Initial canvas size
 	useEffect(() => {
-		const documentWidth = document.documentElement.clientWidth;
-		const containerWidth = document.getElementsByClassName("container")[0].clientWidth;
+		const containerWidth = document.getElementsByClassName(styles.signaturePad)[0].clientWidth;
 
 		const canvasHeight = containerWidth * 0.62962962963;
 		const canvasWidth = containerWidth;
 
 		setCanvasHeight(canvasHeight);
 		setCanvasWidth(canvasWidth);
+		setDisplaySignature(user.signature);
 	}, []);
 
+	// Initialize signature pad
 	useEffect(() => {
 		if ((canvasHeight, canvasWidth)) {
 			const canvas = document.getElementById("signature-pad");
@@ -44,43 +47,77 @@ function Signature({ user, setUser, translate }) {
 		}
 	}, [canvasHeight, canvasWidth]);
 
-	const clearSignature = () => {
+	const onClearSignature = () => {
 		signaturePad.clear();
+		setDisplaySignature(null);
 	};
 
-	const saveSignature = async () => {
+	const onSaveSignature = async () => {
 		try {
-			const signature = signaturePad.toDataURL("image/png");
-			const res = await axios.post("/profile/signature", { signature });
+			const signaturePadBase64 = signaturePad.toDataURL("image/png");
+			const signature = displaySignature === null ? signaturePadBase64 : await concatBase64Images(displaySignature, signaturePadBase64);
+			await axios.put("/profile/signature", { signature });
 
-			setUser(res);
+			setUser({ ...user, signature });
 			successHandler("Signature saved successfully");
-			Router.back();
+			Router.push("/profile/edit");
 		} catch (err) {
 			errorHandler(err);
 		}
 	};
 
+	const onDeleteSignature = async () => {
+		try {
+			const signature = null;
+			await axios.put("/profile/signature", { signature });
+
+			setUser({ ...user, signature });
+			successHandler("Signature deleted successfully");
+			Router.push("/profile/edit");
+		} catch (err) {
+			errorHandler(err);
+		}
+	};
+
+	const concatBase64Images = (base64Image1, base64Image2) => {
+		return new Promise((resolve) => {
+			const img1 = new Image();
+			img1.src = base64Image1;
+			img1.onload = () => {
+				const img2 = new Image();
+				img2.src = base64Image2;
+				img2.onload = () => {
+					const canvas = document.createElement("canvas");
+					canvas.width = img1.width;
+					canvas.height = img1.height;
+					const ctx = canvas.getContext("2d");
+					ctx.drawImage(img1, 0, 0);
+					ctx.drawImage(img2, 0, 0);
+					const concatenatedBase64 = canvas.toDataURL("image/png");
+					resolve(concatenatedBase64);
+				};
+			};
+		});
+	};
+
 	return (
 		<>
 			<SubHeader title={"Signature"} />
-			<div className="container">
-				<Row>
-					<Button icon={"delete"} className={"btn-secondary"} onClick={clearSignature}>
-						Clear
-					</Button>
-					<Button icon={"save"} onClick={saveSignature}>
-						Save
-					</Button>
-				</Row>
-			</div>
-			<div className={`${styles.signaturePad} container`}>
+
+			<Row className="container-x pt">
+				<Button icon={"delete"} className={"btn-secondary flex-1"} onClick={onDeleteSignature} title={"Delete"} />
+				<Button icon={"layers_clear"} className={"btn-secondary flex-1"} onClick={onClearSignature} title={"Clear"} />
+				<Button icon={"save"} className={"flex-1"} onClick={onSaveSignature} title={"Save"} />
+			</Row>
+
+			<div className={`${styles.signaturePad}`}>
 				{canvasHeight && canvasWidth && (
-					<div className={styles.signaturePad__body}>
+					<div className={styles.signaturePad__body} style={{ height: canvasHeight, width: canvasWidth }}>
 						<div className={styles.signaturePad__text}>Write you signature here.</div>
 						<canvas id="signature-pad" />
 					</div>
 				)}
+				<div className={styles.signaturePad__display}>{displaySignature && <img src={displaySignature} />}</div>
 			</div>
 		</>
 	);

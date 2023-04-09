@@ -70,17 +70,20 @@
 	}
 }
 
-
 .signaturePad {
+	position: relative;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	width: 100%;
 	height: 100%;
+	margin-top: 16px;
+	box-shadow: inset 0px 16px 0px var(--borderColor), inset 0px -16px 0px var(--borderColor), inset 16px 0px 0px var(--borderColor),
+		inset -16px 0px 0px var(--borderColor);
+	background-color: rgba(0, 0, 0, 0.1);
 	canvas {
-		background-color: rgba(0, 0, 0, 0.1);
-		box-shadow: inset 0px 10px 0px var(--borderColor), inset 0px -10px 0px var(--borderColor), inset 10px 0px 0px var(--borderColor),
-			inset -10px 0px 0px var(--borderColor);
+		position: absolute;
+		z-index: 5;
 	}
 	.signaturePad__body {
 		position: relative;
@@ -92,6 +95,30 @@
 		transform: translate(-50%, -50%);
 		font-size: 16px;
 		font-weight: 300;
+	}
+	.signaturePad__display {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 4;
+		img {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+	}
+}
+
+.prviewDocument {
+	position: relative;
+	width: 100%;
+	margin-top: 16px;
+	img {
+		width: 100%;
 	}
 }
 
