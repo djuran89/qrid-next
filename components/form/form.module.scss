@@ -94,6 +94,10 @@
 		-moz-appearance: textfield;
 		color: var(--primaryTextColor);
 	}
+	input:disabled > * {
+		background-color: red;
+		color: var(--primaryTextColor) !important;
+	}
 }
 .row {
 	display: flex;

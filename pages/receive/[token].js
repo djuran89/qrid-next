@@ -24,14 +24,14 @@ const ReceiveProfile = ({ translate }) => {
 			.then((res) => setProfile(res))
 			.catch((err) => setTokenExpired(true));
 	}, []);
+	console.log(profile)
 
 	// CHECK TOKEN EXPIRED
 	React.useEffect(() => {
 		const interval = setInterval(() => {
-			axios.post("/qrcode/token", { token }).then((res) => {
-				setTokenExpired(!res);
-				errorHandler("Token expired");
-				if (!res) clearInterval(interval);
+			axios.post("/qrcode/token/expire", { token }).then((res) => {
+				setTokenExpired(res);
+				if (res) clearInterval(interval);
 			});
 		}, 1000);
 
@@ -49,8 +49,8 @@ const ReceiveProfile = ({ translate }) => {
 	return (
 		<>
 			<SubHeader title={translate.profile} />
-			{!tokenExpired && <ProfileDocuments className="container" user={profile} />}
-			{!tokenExpired && <ProfileForm className="container" user={profile} preview={true} showEmail={true} />}
+			<ProfileDocuments className="container" user={profile} />
+			<ProfileForm className="container" user={profile} preview={true} showEmail={true} />
 		</>
 	);
 };

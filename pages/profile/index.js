@@ -157,10 +157,13 @@ const SendQR = ({ user }) => {
 		}
 	};
 
+	const qrLink = `${process.env.APPURL}/receive/${token}`;
+
 	return (
 		<div className={`${styles.qrcode}`}>
 			{/* <QRCodeComponent value={"test"} /> */}
-			<QRCode fgColor={qrCodeColor} value={`${process.env.APPURL}/receive/${token}`} />
+			<QRCode fgColor={qrCodeColor} value={qrLink} />
+			{/* <Link href={qrLink}>QRLINK</Link> */}
 
 			<div className={styles.validCode}>
 				<div className={styles.validInfo}>

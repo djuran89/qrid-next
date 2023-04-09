@@ -50,7 +50,7 @@ export const Input = ({ className, type, name, placeholder, label, value, onChan
 					pattern={pattern(type)}
 					placeholder={placeholder}
 					required={required}
-					disabled={disabled}
+					readOnly={disabled}
 				/>
 				<div className={`${styles.labelGroup} ${value ? styles.active : ""}`}>{label}</div>
 			</label>
